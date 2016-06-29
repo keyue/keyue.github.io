@@ -1,8 +1,9 @@
 # Basic
 title: mingway
-subtitle: better coder, better life!
+subtitle: Better Coding, Better Life!
 # welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
-description: An iOS Developer Dayli
+welcome_message: iOS Developer Dayily.
+description: Learning About Object-C、Swift、Nodejs、MogonDB、Git、Sketch、Product etc.
 creator: <a href="http://keyue.me">@mingway</a>
 
 url: "http://keyue.me"
