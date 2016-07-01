@@ -20,28 +20,30 @@ date: 2016-06-29 20:32:24.000000000 +09:00
 
 ![Mou icon](http://o9lammkmn.bkt.clouddn.com/IMG_3201.JPG?imageView2/2/w/400)
 
+#####关于APNG与gif白边问题的讨论：
+
 [移动端图片格式调研](http://blog.ibireme.com/2015/11/02/mobile_image_benchmark/)
 
 [腾讯PNG格式转换APNG工具](https://isux.tencent.com/introduction-of-apng.html)
- [github地址](https://github.com/iSparta/iSparta)
+ 
+[github 传送门](https://github.com/iSparta/iSparta)
 
 >3.Other Content(Photos,Videos,Text,Links)。Apple还提供了一种更容易让用户发现iMessage Apps的功能，就是如果你接收到一条消息，你的手机上又没有安装这个iMessage App，在消息下面会显示这条消息的出处，你点击后会直接启动Message AppStore。
 
-
->关于 Custom Sticker App:
+####关于 Custom Sticker App:
 	
 >1.可以定制UI,比如显示的Layout、background color等
 
 >2.可以动态创建Sticker,比如,从Server上Download sticker,否则只能在Message AppStore
 
 >3.可以使用摄像头创建Sticker
+
 >4.可以做应用内支付，付费后激活某些Stickers
 
->iMessage Apps只能运行在iOS X上，但是macOS和WatchOS都可以接收到iMessage Apps发送的消息。
+iMessage Apps只能运行在iOS X上，但是macOS和WatchOS都可以接收到iMessage Apps发送的消息。
+MessagesFramework也是iOS X推出的东西，它作为Message应用和iMessage Apps直接的桥梁，通过MessagesFramework我们可以接收到Message应用的回调，也可以向Message应用发送消息。
 
 ![Mou icon](http://o9lammkmn.bkt.clouddn.com/IMG_3198.JPG?imageView2/2/w/600)
-
->MessagesFramework也是iOS X推出的东西，它作为Message应用和iMessage Apps直接的桥梁，通过MessagesFramework我们可以接收到Message应用的回调，也可以向Message应用发送消息。
 
 ![Mou icon](http://o9lammkmn.bkt.clouddn.com/IMG_3204.JPG?imageView2/2/w/600)
 
