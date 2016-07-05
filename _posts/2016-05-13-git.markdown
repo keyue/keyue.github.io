@@ -3,11 +3,12 @@ layout: post
 title: git
 date: 2016-05-13 12:08:08.000000000 +09:00
 ---
+![git icon](http://o9lammkmn.bkt.clouddn.com/IMG_2009.jpeg?imageView2/2/w/600)
+#### 写在前面 
 
-#### 写在前面
-周三刚在公司内部做完git的分享，这里稍微再整理下，方便以后查看。 
+周三刚在公司内部做完git的分享，这里稍微再整理下，方便以后查看。在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即svn和git(其他版本控制系统还有比如：cvs,vvs)。在svn下我们常配合图形管理工具 CornerStore使用、git 常配合图形管理工具 SourceTree 使用。
 
-在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即svn和git(还有其他版本控制系统：cvs,vvs)。在svn下我们常配合图形管理工具 CornerStore使用、git 常配合图形管理工具 SourceTree 使用。git是当下最流行的分布式版本控制系统，今天，我来分享一下git的使用。
+![git sourcetree](http://o9lammkmn.bkt.clouddn.com/IMG_2001.jpg)
 
 #### git与svn的不同
 1. 本质区别：
@@ -20,21 +21,21 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 	svn是按文件存储，git是按元数据方式存储。因此，每次从服务器pull代码的时候，svn相当于打包下载，git是只更新最新被修改的文件。
 5. 权限问题：
 	在svn中，可以设定每个账号的权限，比如只读、读写权限等，而git就没有相应的权限控制，相同Team下的iOS、Android、NodeJs项目。这也正是一些公司仍然使用svn的原因。
-
+	
 #### git常用命令
-<!--1. 设置
+1. 设置
 	1. config命令
-		- git config --global user.name lavor：配置全局用户名，若不要“--global”或者将“global”改为“local”则表示配置局部用户名
-		- git config --global user.email lavor@qq.com：配置全局电子邮箱
-		- git config --global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config --global alias.pom 'push origin master'注意复合操作中不可以带-与""
-		- git config --list：显示所有配置信息
+		- git config --global user.name keyue:配置全局用户名，若不要"--global"或者将"global"改为"local"则表示配置局部用户名
+		- git config --global user.email keyue@gmail.com:配置全局电子邮箱
+		- git config --global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config --global alias.pom 'push origin master'注意复合操作中不可以带"-"与""
+		- git config --list:显示所有配置信息
 	2. help命令
-		- git help：显示帮助信息，会显示一些常见git命令及其意义-->
+		- git help:显示帮助信息，会显示一些常见git命令及其意义
 2. 创建项目
 	1. init命令
 		- git init：在本地初始化一个git仓库
 	2. clone命令
-		- git clone git@github.com:lavor-zl/Github-Git.git：从远程服务器克隆一个仓库到本地
+		- git clone git@github.com:keyue-zl/Github-Git.git：从远程服务器克隆一个仓库到本地
 3. 基本操作
 	1. add命令
 		- git add README：添加工作目录的文件到暂存区
@@ -46,7 +47,7 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 	3. commit命令
 		- git commit -m "提交消息"：提交暂存区的文件，带有提交消息
 		- git commit -a -m "提交消息"：跳过暂存区，直接提交工作目录中所有改变的文件，但是不能提交工作目录中新增的文件
-		- git commit --author=lavor -m "提交消息"：提交暂存区的文件，并重写提交作者
+		- git commit --author=keyue -m "提交消息"：提交暂存区的文件，并重写提交作者
 		- git commit --date=06.13.2016T09:00:00 -m "提交消息"：提交暂存区的文件，并重写提交日期
 		- git commit --amend -m "提交消息"：通过创建一个新的提交，以替换当前分支的前端。所代表的含义就是在最新一次提交的基础上进行提交。比如我们完成了最新一次提交，并且这次提交完成后我们对工作目录进行了一些修改，但是我们发现某个文件忘了添加到暂存区并提交，我们可以先添加该文件到暂存区，然后利用该命令进行提交。
 	4. reset命令
@@ -178,6 +179,41 @@ git remote remove remote-name：移除远程仓库
 	3. grep命令
 		- git grep keys：在工作目录中所有文件中搜索keys
 		- git grep --cached keys：在暂存区中所有文件中搜索keys
+		
+#### 分支模型
+
+每个项目必须要有master、develop分支。
+每个开发人员拥有一个自己的分支，如aa-dev、bb-dev。
+
+1. master 分支
+	- master 分支只能存在release版本的代码，并需要对每个release打对应的tag。
+
+2. develop 分支
+	- develop 由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。
+	- 当参与开发的人员较多时，可指定一个人管理develop分支，专门负责合并代码，便于管理，避免多人同时使用develop分支而出现问题。
+	- 另外当功能开发完毕后，代码合并入develop分支，测试完成通过后，merge到master分支，并在master上打tag。
+	- 开发人员自己的分支
+	- 开发人员自己的分支，由develop分支检出，是自己负责的功能分支的上游
+
+#### 工作流程
+1. Feature （新需求开发）
+	- 当有新需求需要开发时：
+	- 每个开发人员在自己的分支上检出一个新的feature分支，如在czn上检出feature_search分支
+	- 在新的feature分支上进行开发
+	- 新功能开发完毕后合并到自己的分支
+	- 所有人员的分支合并到develop分支，并进行测试
+	- 测试通过后合并到master，并打tag
+
+2. Hotfix （紧急修复bug）
+	- 当有紧急bug需要修复时
+	- 从master 拉分支hotfix_xxx
+	- 修复完毕后合并到develop分支
+	- 测试完毕后合并到master分支，并打tag
+
+#### 小结
+分支模型已经工作流程大约如图所示：
+
+![git flow](http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg)
 
 #### 学习资料推荐
 1. [GitPro2](https://git-scm.com/book/zh/v2/起步-关于版本控制)

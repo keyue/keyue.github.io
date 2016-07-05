@@ -5,9 +5,9 @@
     <description>Learning About Object-C、Swift、Nodejs、MogonDB、Git、Sketch、Product etc.</description>
     <link>http://keyue.me/</link>
     <atom:link href="http://keyue.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Jul 2016 00:40:15 +0800</pubDate>
-    <lastBuildDate>Sun, 03 Jul 2016 00:40:15 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.1</generator>
+    <pubDate>Tue, 05 Jul 2016 23:19:08 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jul 2016 23:19:08 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>WWDC 2016 Session 204 iMessage App and Stickers</title>
@@ -75,11 +75,13 @@ MessagesFramework也是iOS X推出的东西，它作为Message应用和iMessage 
     
       <item>
         <title>git</title>
-        <description>&lt;h4&gt;写在前面&lt;/h4&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/IMG_2009.jpeg?imageView2/2/w/600&quot; alt=&quot;git icon&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;周三刚在公司内部做完git的分享，这里稍微再整理下，方便以后查看。 &lt;/p&gt;
+&lt;h4&gt;写在前面&lt;/h4&gt;
 
-&lt;p&gt;在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即svn和git(还有其他版本控制系统：cvs,vvs)。在svn下我们常配合图形管理工具 CornerStore使用、git 常配合图形管理工具 SourceTree 使用。git是当下最流行的分布式版本控制系统，今天，我来分享一下git的使用。&lt;/p&gt;
+&lt;p&gt;周三刚在公司内部做完git的分享，这里稍微再整理下，方便以后查看。在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即svn和git(其他版本控制系统还有比如：cvs,vvs)。在svn下我们常配合图形管理工具 CornerStore使用、git 常配合图形管理工具 SourceTree 使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/IMG_2001.jpg&quot; alt=&quot;git sourcetree&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;git与svn的不同&lt;/h4&gt;
 
@@ -98,16 +100,24 @@ svn是按文件存储，git是按元数据方式存储。因此，每次从服�
 
 &lt;h4&gt;git常用命令&lt;/h4&gt;
 
-&lt;!--1. 设置
-    1. config命令
-        - git config --global user.name lavor：配置全局用户名，若不要“--global”或者将“global”改为“local”则表示配置局部用户名
-        - git config --global user.email lavor@qq.com：配置全局电子邮箱
-        - git config --global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config --global alias.pom &#39;push origin master&#39;注意复合操作中不可以带-与&quot;&quot;
-        - git config --list：显示所有配置信息
-    2. help命令
-        - git help：显示帮助信息，会显示一些常见git命令及其意义--&gt;
+&lt;ol&gt;
+&lt;li&gt;设置
 
 &lt;ol&gt;
+&lt;li&gt;config命令
+
+&lt;ul&gt;
+&lt;li&gt;git config --global user.name keyue:配置全局用户名，若不要&amp;quot;--global&amp;quot;或者将&amp;quot;global&amp;quot;改为&amp;quot;local&amp;quot;则表示配置局部用户名&lt;/li&gt;
+&lt;li&gt;git config --global user.email &lt;a href=&quot;mailto:keyue@gmail.com&quot;&gt;keyue@gmail.com&lt;/a&gt;:配置全局电子邮箱&lt;/li&gt;
+&lt;li&gt;git config --global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config --global alias.pom &amp;#39;push origin master&amp;#39;注意复合操作中不可以带&amp;quot;-&amp;quot;与&amp;quot;&amp;quot;&lt;/li&gt;
+&lt;li&gt;git config --list:显示所有配置信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;help命令
+
+&lt;ul&gt;
+&lt;li&gt;git help:显示帮助信息，会显示一些常见git命令及其意义&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;创建项目
 
 &lt;ol&gt;
@@ -119,7 +129,7 @@ svn是按文件存储，git是按元数据方式存储。因此，每次从服�
 &lt;li&gt;clone命令
 
 &lt;ul&gt;
-&lt;li&gt;git clone &lt;a href=&quot;mailto:git@github.com&quot;&gt;git@github.com&lt;/a&gt;:lavor-zl/Github-Git.git：从远程服务器克隆一个仓库到本地&lt;/li&gt;
+&lt;li&gt;git clone &lt;a href=&quot;mailto:git@github.com&quot;&gt;git@github.com&lt;/a&gt;:keyue-zl/Github-Git.git：从远程服务器克隆一个仓库到本地&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;基本操作
@@ -146,7 +156,7 @@ svn是按文件存储，git是按元数据方式存储。因此，每次从服�
 &lt;ul&gt;
 &lt;li&gt;git commit -m &amp;quot;提交消息&amp;quot;：提交暂存区的文件，带有提交消息&lt;/li&gt;
 &lt;li&gt;git commit -a -m &amp;quot;提交消息&amp;quot;：跳过暂存区，直接提交工作目录中所有改变的文件，但是不能提交工作目录中新增的文件&lt;/li&gt;
-&lt;li&gt;git commit --author=lavor -m &amp;quot;提交消息&amp;quot;：提交暂存区的文件，并重写提交作者&lt;/li&gt;
+&lt;li&gt;git commit --author=keyue -m &amp;quot;提交消息&amp;quot;：提交暂存区的文件，并重写提交作者&lt;/li&gt;
 &lt;li&gt;git commit --date=06.13.2016T09:00:00 -m &amp;quot;提交消息&amp;quot;：提交暂存区的文件，并重写提交日期&lt;/li&gt;
 &lt;li&gt;git commit --amend -m &amp;quot;提交消息&amp;quot;：通过创建一个新的提交，以替换当前分支的前端。所代表的含义就是在最新一次提交的基础上进行提交。比如我们完成了最新一次提交，并且这次提交完成后我们对工作目录进行了一些修改，但是我们发现某个文件忘了添加到暂存区并提交，我们可以先添加该文件到暂存区，然后利用该命令进行提交。&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -383,6 +393,57 @@ git remote remove remote-name：移除远程仓库&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h4&gt;分支模型&lt;/h4&gt;
+
+&lt;p&gt;每个项目必须要有master、develop分支。
+每个开发人员拥有一个自己的分支，如aa-dev、bb-dev。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;master 分支&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;master 分支只能存在release版本的代码，并需要对每个release打对应的tag。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;develop 分支&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;develop 由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。&lt;/li&gt;
+&lt;li&gt;当参与开发的人员较多时，可指定一个人管理develop分支，专门负责合并代码，便于管理，避免多人同时使用develop分支而出现问题。&lt;/li&gt;
+&lt;li&gt;另外当功能开发完毕后，代码合并入develop分支，测试完成通过后，merge到master分支，并在master上打tag。&lt;/li&gt;
+&lt;li&gt;开发人员自己的分支&lt;/li&gt;
+&lt;li&gt;开发人员自己的分支，由develop分支检出，是自己负责的功能分支的上游&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;工作流程&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Feature （新需求开发）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当有新需求需要开发时：&lt;/li&gt;
+&lt;li&gt;每个开发人员在自己的分支上检出一个新的feature分支，如在czn上检出feature_search分支&lt;/li&gt;
+&lt;li&gt;在新的feature分支上进行开发&lt;/li&gt;
+&lt;li&gt;新功能开发完毕后合并到自己的分支&lt;/li&gt;
+&lt;li&gt;所有人员的分支合并到develop分支，并进行测试&lt;/li&gt;
+&lt;li&gt;测试通过后合并到master，并打tag&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hotfix （紧急修复bug）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当有紧急bug需要修复时&lt;/li&gt;
+&lt;li&gt;从master 拉分支hotfix_xxx&lt;/li&gt;
+&lt;li&gt;修复完毕后合并到develop分支&lt;/li&gt;
+&lt;li&gt;测试完毕后合并到master分支，并打tag&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;小结&lt;/h4&gt;
+
+&lt;p&gt;分支模型已经工作流程大约如图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg&quot; alt=&quot;git flow&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;学习资料推荐&lt;/h4&gt;
 
