@@ -5,8 +5,8 @@
     <description>Learning About Object-C、Swift、Nodejs、MogonDB、Git、Sketch、Product etc.</description>
     <link>http://keyue.me/</link>
     <atom:link href="http://keyue.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Jul 2016 23:19:08 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jul 2016 23:19:08 +0800</lastBuildDate>
+    <pubDate>Thu, 07 Jul 2016 00:17:51 +0800</pubDate>
+    <lastBuildDate>Thu, 07 Jul 2016 00:17:51 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -74,7 +74,7 @@ MessagesFramework也是iOS X推出的东西，它作为Message应用和iMessage 
       </item>
     
       <item>
-        <title>git</title>
+        <title>git入坑不完全指南</title>
         <description>&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/IMG_2009.jpeg?imageView2/2/w/600&quot; alt=&quot;git icon&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;写在前面&lt;/h4&gt;
@@ -476,8 +476,8 @@ git remote remove remote-name：移除远程仓库&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Fri, 13 May 2016 11:08:08 +0800</pubDate>
-        <link>http://keyue.me/2016/05/git/</link>
-        <guid isPermaLink="true">http://keyue.me/2016/05/git/</guid>
+        <link>http://keyue.me/2016/05/git%E5%85%A5%E5%9D%91%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/</link>
+        <guid isPermaLink="true">http://keyue.me/2016/05/git%E5%85%A5%E5%9D%91%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/</guid>
         
         
       </item>
@@ -666,6 +666,42 @@ print_hi(&amp;#39;Tom&amp;#39;)
         <pubDate>Mon, 15 Feb 2016 14:32:24 +0800</pubDate>
         <link>http://keyue.me/2016/02/sample-post/</link>
         <guid isPermaLink="true">http://keyue.me/2016/02/sample-post/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>读《设计之下》笔记</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/IMG_201510030001.jpg&quot; alt=&quot;image design&quot;&gt;&lt;/p&gt;
+
+&lt;h4&gt;写在前面&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;去年年底的时候，朋友拿到了一笔天使投资，然后邀请我加入了他们的初创公司，从此开始了创业之旅。年初的时候，资本市场还是疯狂的，身边有几个朋友，是在还没有用户规模、甚至只是一个idea的情况下，也顺利拿到了融资。但是这种好时光并没有一直持续，或许是被互联网的烧钱速度烧怕了、或许是投资人看到了狂热背后的残酷的事实。到了7-8月份，突然一下子，就进入资本寒冬了。虽然不是气候上的冬天，但对于许多初创团队，意味着冬天真正提前到来了。许多的初创公司都开始反思刚需与伪需求的命题、同时也开启了面向北上广的融资、开始了各种抱团、资源共享。。。项目一直处于不断迭代的状态，也已经连续加班了好长一段时间，有的时候走在路上，感觉自己和其他的上班族，都是存在时差的😂。但是，我们深知，没有快速的迭代，像我们一样的初创团队是很难在全民创业的巨浪中存活下来，更别说脱颖而出。&lt;/p&gt;
+
+&lt;p&gt;放假回家前，刚好从公司带了本《设计之下》作为读物放在行旅箱里。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;简介&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;形而上者谓之道，形而下者谓之器。匠者，器也。处身平凡的匠人不断追求向上的设计之道。本书没有华丽的辞藻和长篇大论的理论，作者是搜狐一线的设计团队，写作过程中他们尽力还原真实的工作场景，并总结出了一些实用的经验和方法。他们的生存面貌、发展方式体现了当下多数从业者的生存状态，希望通过这本书能和您分享一些案例思考和感悟！&lt;/p&gt;
+
+&lt;p&gt;《设计之下》共三部分，全面讲解了用户体验设计的流程和方法。第一部分为“交互设计”，阐述了从项目启动、解析需求到原型设计的过程，并且总结了交互设计的要点：大局观、操作流程简捷、形式新颖且统一、各种特殊情况等。第二部分为“视觉设计”，阐述了界面、颜色、图标、质感、动画、切图等具体方法，以及如何与开发/测试工程师们合作、寻找平衡设计与技术的方法。第三部分为“他们眼中的优秀设计师”，通过产品经理、程序员、运营、市场经理的视角，阐述了如何成为一名优秀的设计师。&lt;/p&gt;
+
+&lt;p&gt;《设计之下》适合交互设计师、视觉设计师、用户体验从业人员参考阅读，亦可作为设计类专业学生的参考用书。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;笔记&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;(未完待续)
+&amp;lt;!--&amp;gt; 以下是2014-2015年度最热销的：《失控》、《人类简史》、《从0到1》、《创业维艰》、《免费》、《大数据时代》、《参与感》、《精益创业》、《创新者的窘境》、《互联网+》、《颠覆式创新》。--&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sat, 03 Oct 2015 09:16:24 +0800</pubDate>
+        <link>http://keyue.me/2015/10/%E8%AF%BB-%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%B8%8B-%E7%AC%94%E8%AE%B0/</link>
+        <guid isPermaLink="true">http://keyue.me/2015/10/%E8%AF%BB-%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%B8%8B-%E7%AC%94%E8%AE%B0/</guid>
         
         
       </item>
