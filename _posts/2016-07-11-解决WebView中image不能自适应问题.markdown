@@ -5,10 +5,12 @@ date: 2016-07-11 13:12:04.000000000 +09:00
 ---
 
 #### 写在前面
-> 电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。
 
+> 电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后过来寻求帮助。
 
 > 这里记录一下，方便以后遇到时查阅。
+
+#### 问题
 
 ![image error](http://o9lammkmn.bkt.clouddn.com/20160711001.png)
 
@@ -16,15 +18,18 @@ date: 2016-07-11 13:12:04.000000000 +09:00
 
 ![image error](http://o9lammkmn.bkt.clouddn.com/20160711002.png)
 
-> 查看网页源代码
+> 查看html源代码，此处当时忘记截图，分析后的原因就是是没有对宽度进行自适应。
 
-![image error](http://o9lammkmn.bkt.clouddn.com/20160711004.png)
-	
-> 可以看出前端应该是没有对自适应代码，应该加上以下代码
+> 这里的前端已经修改好了，应该加上以下代码：
 > 
 	```<meta name="viewport" content="initial-scale=1.0, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes\"> 
 	```
-1. 核心代码
+> 修改过后的html源码是这样的
+
+![image error](http://o9lammkmn.bkt.clouddn.com/20160711004.png)
+	
+
+#### 核心代码
 
 	```
 	@property (weak, nonatomic) IBOutlet UIWebView *webView;

@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>解决WebView中image不能自适应问题</title>
-  <meta name="description" content="写在前面电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。">
+  <meta name="description" content="写在前面">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="解决WebView中image不能自适应问题">
-  <meta name="twitter:description" content="写在前面电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。">
+  <meta name="twitter:description" content="写在前面">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="解决WebView中image不能自适应问题">
-  <meta property="og:description" content="写在前面电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。">
+  <meta property="og:description" content="写在前面">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -151,10 +151,12 @@
     <h4>写在前面</h4>
 
 <blockquote>
-<p>电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。</p>
+<p>电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后过来寻求帮助。</p>
 
 <p>这里记录一下，方便以后遇到时查阅。</p>
 </blockquote>
+
+<h4>问题</h4>
 
 <p><img src="http://o9lammkmn.bkt.clouddn.com/20160711001.png" alt="image error"></p>
 
@@ -165,20 +167,18 @@
 <p><img src="http://o9lammkmn.bkt.clouddn.com/20160711002.png" alt="image error"></p>
 
 <blockquote>
-<p>查看网页源代码</p>
+<p>查看html源代码，此处当时忘记截图，分析后的原因就是是没有对宽度进行自适应。</p>
+
+<p>这里的前端已经修改好了，应该加上以下代码：</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">```&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes\&quot;&gt; 
+```
+</code></pre></figure>
+<p>修改过后的html源码是这样的</p>
 </blockquote>
 
 <p><img src="http://o9lammkmn.bkt.clouddn.com/20160711004.png" alt="image error"></p>
 
-<blockquote>
-<p>可以看出前端应该是没有对自适应代码，应该加上以下代码</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">```&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes\&quot;&gt; 
-```
-</code></pre></figure>
-<ol>
-<li>核心代码</li>
-</ol>
-</blockquote>
+<h4>核心代码</h4>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">```
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, assign) BOOL isLoadingFinished;
