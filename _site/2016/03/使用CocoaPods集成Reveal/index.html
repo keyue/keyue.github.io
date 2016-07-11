@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Hello World 2 - Vno</title>
-  <meta name="description" content="What&#39;s this">
+  <title>使用CocoaPods集成Reveal</title>
+  <meta name="description" content="这种方式最简单集成进项目">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello World 2 - Vno">
-  <meta name="twitter:description" content="What&#39;s this">
+  <meta name="twitter:title" content="使用CocoaPods集成Reveal">
+  <meta name="twitter:description" content="这种方式最简单集成进项目">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hello World 2 - Vno">
-  <meta property="og:description" content="What&#39;s this">
+  <meta property="og:title" content="使用CocoaPods集成Reveal">
+  <meta property="og:description" content="这种方式最简单集成进项目">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://keyue.me/2014/02/hello-world-vno/">
+  <link rel="canonical" href="http://keyue.me/2016/03/%E4%BD%BF%E7%94%A8CocoaPods%E9%9B%86%E6%88%90Reveal/">
   <link rel="alternate" type="application/rss+xml" title="mingway" href="http://keyue.me/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -142,57 +142,32 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2014-02-16 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2014-02-16</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2016-03-16 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-03-16</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">Hello World 2 - Vno</h1>
+    <h1 class="post-title">使用CocoaPods集成Reveal</h1>
   </header>
 
   <section class="post">
-    <h4>What&#39;s this</h4>
+    <p><img src="http://o9lammkmn.bkt.clouddn.com/reveal-hero-2.png" alt="hello reveal"></p>
 
-<p><a href="https://github.com/onevcat/vno-jekyll">Vno Jekyll</a> is a theme for <a href="http://jekyllrb.com">Jekyll</a>. It is a port of my Ghost theme <a href="https://github.com/onevcat/vno">vno</a>, which is originally developed from <a href="https://github.com/daleanthony/uno">Dale Anthony&#39;s Uno</a>.</p>
+<h4>这种方式最简单集成进项目</h4>
 
-<h4>Usage</h4>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ git clone https://github.com/onevcat/vno-jekyll.git your_site
-$ cd your_site
-$ bundler install
-$ bundler exec jekyll serve
-</code></pre></figure>
-<p>Your site with <code>Vno Jekyll</code> enabled should be accessible in <a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a>.</p>
+<p>CocoaPods提供了Podspec用于将Reveal集成到项目。</p>
 
-<p>For more information about Jekyll, please visit <a href="http://jekyllrb.com">Jekyll&#39;s site</a>.</p>
+<p>警告: 不要将连接了Reveal库文件的应用用于正式发布。下面的指南描述了一种使用构建配置来使Reveal静态库文件仅在调试构建中连接的方式。</p>
 
-<h4>Configuration</h4>
+<p>此说明要求您在之前已经在项目中配置好了CocoaPods，若不然，请先行配置Cocoapods。</p>
 
-<p>All configuration could be done in <code>_config.yml</code>. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.</p>
+<ol>
+<li><p>将下面内容加入你的Podfile中：</p>
 
-<h4>Background image and avatar</h4>
+<p><code>pod &#39;Reveal-iOS-SDK&#39;, :configurations =&gt; [&#39;Debug&#39;]
+</code></p></li>
+</ol>
 
-<p>You could replace the background and avatar image in <code>assets/images</code> folder to change them.</p>
-
-<h4>Sites using Vno</h4>
-
-<p><a href="http://onevcat.com">My blog</a> is using <code>Vno Jekyll</code> as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:</p>
-
-<table><thead>
-<tr>
-<th>Site Name</th>
-<th>URL</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>OneV&#39;s Den</td>
-<td><a href="http://onevcat.com">http://onevcat.com</a></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>If you happen to be using this theme, welcome to <a href="https://github.com/onevcat/vno-jekyll/pulls">send me a pull request</a> to add your site link here. :)</p>
-</blockquote>
-
-<h4>License</h4>
-
-<p>Great thanks to <a href="https://github.com/daleanthony">Dale Anthony</a> and his <a href="https://github.com/daleanthony/uno">Uno</a>. Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>. See the link for more information.</p>
+<ol>
+<li>在项目的根目录下执行 pod install 命令（如果之前已经在项目中使用了Cocoapods，请执行 pod update 命令）。</li>
+</ol>
 
   </section>
 </article>
@@ -202,12 +177,20 @@ $ bundler exec jekyll serve
    
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2015/10/%E8%AF%BB-%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%B8%8B-%E7%AC%94%E8%AE%B0/" title="link to 读《设计之下》笔记">读《设计之下》笔记</a></h2>
-       <p class="excerpt">写在前面去年年底的时候，朋友拿到了一笔天使投资，然后邀请我加入了他们的初创公司，从此开始了创业之旅。年初的时候，资本市场还是疯狂的，身边有几个朋友，是在还没有用户规模、甚至只是一个idea的情况下，也顺利拿到了融资。但是这种好时光并没有一直持续，或许是被互联网的烧钱速度烧怕了、或许是投资人看到了狂热背后的残酷的事实。到了7-8月份，突然一下子，就进入资本寒冬了。虽然不是气候上的冬天，但对于许多初创团队，意味着冬天真正提前到来了。许多的初创公司都开始反思刚需与伪需求的命题、同时也开启了面向北...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2015-10-03 09:16:24 +0800" class="post-list__meta--date date">2015-10-03</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2015/10/%E8%AF%BB-%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%B8%8B-%E7%AC%94%E8%AE%B0/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2016/03/WWDC-2016-Session-217-Introducing-SiriKit/" title="link to Hello World - Vno">Hello World - Vno</a></h2>
+       <p class="excerpt">What&#39;s thisVno Jekyll is a theme for Jekyll. It is a port of my Ghost theme vno, which is originally developed from Dale Anthony&#39;s Uno.Usage$ git clone https://github.com/onevcat/vno-jekyll.git your_site$ cd your_site$ bundler install$ bun...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-03-16 14:32:24 +0800" class="post-list__meta--date date">2016-03-16</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/03/WWDC-2016-Session-217-Introducing-SiriKit/>继续阅读</a></div>
    </div>
    
    
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/03/hello-world-vno-copy/" title="link to Hello World - Vno">Hello World - Vno</a></h2>
+       <p class="excerpt">What&#39;s thisVno Jekyll is a theme for Jekyll. It is a port of my Ghost theme vno, which is originally developed from Dale Anthony&#39;s Uno.Usage$ git clone https://github.com/onevcat/vno-jekyll.git your_site$ cd your_site$ bundler install$ bun...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-03-16 14:32:24 +0800" class="post-list__meta--date date">2016-03-16</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/03/hello-world-vno-copy/>继续阅读</a></div>
+   </div>
    
 </section>
 
@@ -217,8 +200,8 @@ $ bundler exec jekyll serve
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://keyue.me/2014/02/hello-world-vno/";
-        this.page.identifier = "/2014/02/hello-world-vno/";
+        this.page.url = "http://keyue.me/2016/03/%E4%BD%BF%E7%94%A8CocoaPods%E9%9B%86%E6%88%90Reveal/";
+        this.page.identifier = "/2016/03/%E4%BD%BF%E7%94%A8CocoaPods%E9%9B%86%E6%88%90Reveal/";
     };
 
     var disqus_shortname = 'keyueme';

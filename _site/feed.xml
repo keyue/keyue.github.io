@@ -5,9 +5,106 @@
     <description>Learning About Object-C、Swift、Nodejs、MogonDB、Git、Sketch、Product etc.</description>
     <link>http://keyue.me/</link>
     <atom:link href="http://keyue.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Jul 2016 13:26:11 +0800</pubDate>
-    <lastBuildDate>Thu, 07 Jul 2016 13:26:11 +0800</lastBuildDate>
+    <pubDate>Mon, 11 Jul 2016 17:49:14 +0800</pubDate>
+    <lastBuildDate>Mon, 11 Jul 2016 17:49:14 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>解决WebView中image不能自适应问题</title>
+        <description>&lt;h4&gt;写在前面&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;电商组的iOS和Web前端的同事，还在为上周没有解决的图片在WebView不能自适应宽度问题烦恼，然后向我发来SOS的信号。&lt;/p&gt;
+
+&lt;p&gt;这里记录一下，方便以后遇到时查阅。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/20160711001.png&quot; alt=&quot;image error&quot;&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;我们先用chrome打开网页地址&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/20160711002.png&quot; alt=&quot;image error&quot;&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;查看网页源代码&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/20160711004.png&quot; alt=&quot;image error&quot;&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;可以看出前端应该是没有对自适应代码，应该加上以下代码&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;```&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;initial-scale=1.0, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes\&amp;quot;&amp;gt; 
+```
+&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;核心代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;```
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, assign) BOOL isLoadingFinished;
+@property (nonatomic, strong) NSString *htmlBody;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    [self.webView setScalesPageToFit:YES];
+    [self loadRemoteUrl];
+
+    _isLoadingFinished = NO;
+    [self.webView setHidden:YES];
+}
+
+- (void)loadRemoteUrl
+{
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@&amp;quot;http://192.168.4.65/apppage/describe?product_id=208&amp;quot;]];
+    [_webView loadRequest:req];
+}
+
+//#pragma mark - UIWebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    if(_isLoadingFinished)
+    {
+        [self.webView setHidden:NO];
+        return;
+    }
+    _htmlBody = [self.webView stringByEvaluatingJavaScriptFromString:@&amp;quot;document.documentElement.innerHTML&amp;quot;];
+    NSString *bodyWidth= [webView stringByEvaluatingJavaScriptFromString:@&amp;quot;document.body.scrollWidth&amp;quot;];
+    int widthOfBody = [bodyWidth intValue];
+    NSString *html = [self htmlAdjustWithPageWidth:widthOfBody
+                                          html:_htmlBody
+                                       webView:webView];
+    _isLoadingFinished = YES;
+    [self.webView loadHTMLString:html baseURL:nil];
+}
+
+- (NSString *)htmlAdjustWithPageWidth:(CGFloat )pageWidth
+                             html:(NSString *)html
+                          webView:(UIWebView *)webView
+{
+    NSMutableString *str = [NSMutableString stringWithString:html];
+    CGFloat initialScale = webView.frame.size.width/pageWidth;
+    NSString *stringForReplace = [NSString stringWithFormat:@&amp;quot;&amp;lt;meta name=\&amp;quot;viewport\&amp;quot; content=\&amp;quot; initial-scale=%f, minimum- scale=0.1, maximum-scale=2.0, user-scalable=yes\&amp;quot;&amp;gt;&amp;lt;/head&amp;gt;&amp;quot;,initialScale];
+
+    NSRange range =  NSMakeRange(0, str.length);
+    [str replaceOccurrencesOfString:@&amp;quot;&amp;lt;/head&amp;gt;&amp;quot; withString:stringForReplace options:NSLiteralSearch range:range];
+    return str;
+}
+```
+&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;h4&gt;最后的效果&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/20160711003.png&quot; alt=&quot;image error&quot;&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 11 Jul 2016 12:12:04 +0800</pubDate>
+        <link>http://keyue.me/2016/07/%E8%A7%A3%E5%86%B3WebView%E4%B8%ADimage%E4%B8%8D%E8%83%BD%E8%87%AA%E9%80%82%E5%BA%94%E9%97%AE%E9%A2%98/</link>
+        <guid isPermaLink="true">http://keyue.me/2016/07/%E8%A7%A3%E5%86%B3WebView%E4%B8%ADimage%E4%B8%8D%E8%83%BD%E8%87%AA%E9%80%82%E5%BA%94%E9%97%AE%E9%A2%98/</guid>
+        
+        
+      </item>
     
       <item>
         <title>WWDC 2016 Session 204 iMessage App and Stickers</title>
@@ -533,6 +630,36 @@ $ bundler exec jekyll serve
         <pubDate>Wed, 16 Mar 2016 14:32:24 +0800</pubDate>
         <link>http://keyue.me/2016/03/WWDC-2016-Session-217-Introducing-SiriKit/</link>
         <guid isPermaLink="true">http://keyue.me/2016/03/WWDC-2016-Session-217-Introducing-SiriKit/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>使用CocoaPods集成Reveal</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://o9lammkmn.bkt.clouddn.com/reveal-hero-2.png&quot; alt=&quot;hello reveal&quot;&gt;&lt;/p&gt;
+
+&lt;h4&gt;这种方式最简单集成进项目&lt;/h4&gt;
+
+&lt;p&gt;CocoaPods提供了Podspec用于将Reveal集成到项目。&lt;/p&gt;
+
+&lt;p&gt;警告: 不要将连接了Reveal库文件的应用用于正式发布。下面的指南描述了一种使用构建配置来使Reveal静态库文件仅在调试构建中连接的方式。&lt;/p&gt;
+
+&lt;p&gt;此说明要求您在之前已经在项目中配置好了CocoaPods，若不然，请先行配置Cocoapods。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;将下面内容加入你的Podfile中：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pod &amp;#39;Reveal-iOS-SDK&amp;#39;, :configurations =&amp;gt; [&amp;#39;Debug&amp;#39;]
+&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在项目的根目录下执行 pod install 命令（如果之前已经在项目中使用了Cocoapods，请执行 pod update 命令）。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 16 Mar 2016 14:32:24 +0800</pubDate>
+        <link>http://keyue.me/2016/03/%E4%BD%BF%E7%94%A8CocoaPods%E9%9B%86%E6%88%90Reveal/</link>
+        <guid isPermaLink="true">http://keyue.me/2016/03/%E4%BD%BF%E7%94%A8CocoaPods%E9%9B%86%E6%88%90Reveal/</guid>
         
         
       </item>
