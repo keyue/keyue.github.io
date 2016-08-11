@@ -33,8 +33,10 @@ imageView.image = [UIImage imageWithData:data];
 ```
 > 这在模拟器上是可以的，但到了真机上却读取不到图片资源，查了一下
 ![image](http://o9lammkmn.bkt.clouddn.com/IMG_201608080001.png)
-	> file:///Users/mingwei/Library/Developer/CoreSimulator/Devices/4B0A6E97-303A-4755-B284-7C308570890D/data/Media/DCIM/100APPLE/IMG_0033.JPG
-	> /private/var/mobile/Media/DCIM/100APPLE/IMG_0033.JPG
+
+>1. Simulator下 file:///Users/mingwei/Library/Developer/CoreSimulator/Devices/4B0A6E97-303A-4755-B284-7C308570890D/data/Media/DCIM/100APPLE/IMG_0033.JPG
+	
+>2. 真机下 /private/var/mobile/Media/DCIM/100APPLE/IMG_0033.JPG
 
 决定使用PhotoKit。
 
