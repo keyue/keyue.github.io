@@ -186,7 +186,39 @@ Git+Plugin (Git)
 
 [jenkins无法下载插件的解决办法](http://blog.csdn.net/russ44/article/details/52266953)
 
+系统重装后 SSH連現時出現「WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!」解決辦法
 
+// https://blog.allenchou.cc/warning-remote-host-identification-has-changed/
+
+
+20161229
+
+2次安装 Jenkins [参考](https://segmentfault.com/a/1190000007086764)
+cat /var/lib/jenkins/secrets/initialAdminPassword
+a77e7ad2ec5d4125a84ce24737abc625
+
+向服务器上传文件
+scp cloudbees-folder.hpi root@192.168.60.48:/var/lib/jenkins/plugins
+
+[烂泥：jenkins插件安装与卸载]http://www.ilanni.com/?p=12612
+
+
+[CentOS 7 安装 Gitlab](https://segmentfault.com/a/1190000002729796)
+[CentOS7 安装 Gitlab](http://zhaijunming5.blog.51cto.com/10668883/1715131)
+
+[记录一次 GitLab 等搭建过程](http://blog.dianqk.org/2015/10/19/记录一次%20GitLab%20等搭建过程/)
+[[gitlab]搭建私有github仓库](https://yq.aliyun.com/articles/20501)
+
+卸载jenkins
+在某次自动安装插件时异常了一大片，刷新也没出现下一步，等待许久无果，删了重装
+
+1.rpm -e jenkins
+2.会有一些残留的文件分散在各地
+find / -iname jenkins | xargs -n 1000 rm -rf
+
+[解决CentOS下卸载MySQL不干净的问题](http://www.centoscn.com/CentosBug/softbug/2014/0924/3829.html)
+
+[阿里云CentOS 7.1使用yum安装MySql5.6.24](https://typecodes.com/web/centos7yuminstallmysql5.html)
 
 
 
