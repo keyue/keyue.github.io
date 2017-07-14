@@ -94,32 +94,34 @@ PasswordAuthentication no
 
 这时换一台机器或者虚拟机进行登录，会提示以下
 
-> ##### # ssh mingweiliao@xmisp.com
-> Permission denied,  (publickey,gssapi-keyex,gssapi-with-mic)
+```
+##### # ssh mingweiliao@xmisp.com
+Permission denied,  (publickey,gssapi-keyex,gssapi-with-mic)
 
-> Last login: Tue Dec  6 15:27:29 on ttys002
-> xmispdeiMac:~ mingwei$ ssh-keygen -t rsa -C  'mingweiliao@xmisp.com'
-> Generating public/private rsa key pair.
-> Enter file in which to save the key (/Users/mingwei/.ssh/id_rsa):
-> Enter passphrase (empty for no passphrase):
-> Enter same passphrase again:
-> Your identification has been saved in /Users/mingwei/.ssh/id_rsa.
-> Your public key has been saved in /Users/mingwei/.ssh/id_rsa.pub.
-> The key fingerprint is:
-> SHA256:dDcz+ZVKniQkgJ2MH7MlBhUnodGpLDsKRRj8l9efa8Q mingweiliao@xmisp.com
-> The key's randomart image is:
-> +---[RSA 2048]----+
-> |oo   oO**o .     |
-> |...  oo@o.o  .  .|
-> | .. ..= O ..*o ..|
-> |  .o = = o .==o. |
-> | .  + . S o .+.  |
-> |.  o       E     |
-> |. . .     . .    |
-> | .         o     |
-> |          .      |
-> +----[SHA256]-----+
-> xmispdeiMac:~ mingwei$
+Last login: Tue Dec  6 15:27:29 on ttys002
+xmispdeiMac:~ mingwei$ ssh-keygen -t rsa -C  'mingweiliao@xmisp.com'
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/mingwei/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/mingwei/.ssh/id_rsa.
+Your public key has been saved in /Users/mingwei/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:dDcz+ZVKniQkgJ2MH7MlBhUnodGpLDsKRRj8l9efa8Q mingweiliao@xmisp.com
+The key's randomart image is:
++---[RSA 2048]----+
+|oo   oO**o .     |
+|...  oo@o.o  .  .|
+| .. ..= O ..*o ..|
+|  .o = = o .==o. |
+| .  + . S o .+.  |
+|.  o       E     |
+|. . .     . .    |
+| .         o     |
+|          .      |
++----[SHA256]-----+
+xmispdeiMac:~ mingwei$
+```
 
 生成 rsa
 
@@ -174,19 +176,22 @@ sudo yum install jenkins
 > 则说明jenkins没有找到java安装目录，若此时已经卸载了openjdk，安装了新版本的全java包，则可以通过修改init.d中配置文件解决，方法如下：
 
 > 修改/etc/init.d/jenkins ，输入指令 vi /etc/init.d/jenkins
+
 > 找到candidates,修改如下，将你安装的java所在路径写到第一个候选位置（最前面）即可，或建立/usr/bin/java软连接连接到新安装的java，将/usr/bin/java写到最前。
 
->    candidates="
->    /usr/bin/java
->    /usr/java/jdk1.8.0_40/bin/java
->    /etc/alternatives/java
->    /usr/lib/jvm/java-1.6.0/bin/java
->    /usr/lib/jvm/jre-1.6.0/bin/java
->    /usr/lib/jvm/java-1.7.0/bin/java
->    /usr/lib/jvm/jre-1.7.0/bin/java
->    /usr/lib/jvm/java-1.8.0/bin/java
->    /usr/lib/jvm/jre-1.8.0/bin/java
->    "
+```
+    candidates="
+    /usr/bin/java
+    /usr/java/jdk1.8.0_40/bin/java
+    /etc/alternatives/java
+    /usr/lib/jvm/java-1.6.0/bin/java
+    /usr/lib/jvm/jre-1.6.0/bin/java
+    /usr/lib/jvm/java-1.7.0/bin/java
+    /usr/lib/jvm/jre-1.7.0/bin/java
+    /usr/lib/jvm/java-1.8.0/bin/java
+    /usr/lib/jvm/jre-1.8.0/bin/java
+    "
+```
 
 > [解决方案](https://testerhome.com/topics/4043)
 
@@ -207,11 +212,17 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 [天朝墙的问题 官方Plugins](https://wiki.jenkins-ci.org/display/JENKINS/Plugins)
 
 > Xcode integration
+
 > Credentials Plugin
+
 > Keychains and Provisioning Profiles Management
+
 > Publish over FTP
+
 > Post-Build Script Plug-in
+
 > Subversion Plug-in （SVN）
+
 > Git+Plugin (Git)
 
 [jenkins无法下载插件的解决办法](http://blog.csdn.net/russ44/article/details/52266953)
@@ -236,7 +247,7 @@ a77e7ad2ec5d4125a84ce24737abc625
 scp cloudbees-folder.hpi root@192.168.60.*:/var/lib/jenkins/plugins
 ```
 
-[烂泥：jenkins插件安装与卸载]http://www.ilanni.com/?p=12612
+[烂泥：jenkins插件安装与卸载](http://www.ilanni.com/?p=12612)
 
 
 [CentOS 7 安装 Gitlab](https://segmentfault.com/a/1190000002729796)
