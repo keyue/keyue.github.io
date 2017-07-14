@@ -6,17 +6,26 @@ date: 2016-12-06 08:37:23.000000000 +09:00
 [手把手教你利用Jenkins持续集成iOS项目](http://www.cocoachina.com/ios/20160804/17281.html)
 #### mac下启动jenkins
 
+```
 cd /Applications/Jenkins
 java -jar jenkins.war
+```
 
 #### 1. [mac 怎么登录到 linux 服务器并传输文件？](https://www.zhihu.com/question/22407930)
 可以用 Mac 自带的 Terminal.app。登录到服务器：
+
+```
 $ ssh user@remote
+```
 
 如果你没配置过 ssh key，一般会问你要密码，输入密码即可，注意输入的时候不像平常密码输入框，是没有提示的。登录上去之后，建议配置一下 ssh key，方便后续操作。参考 [How To Set Up SSH Keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
 
 上传文件也是如此，有多种复用 SSH 协议的上传文件途径，最基本的是 scp：
+
+```
 $ scp ~/local/file user@remote:~/file
+```
+
 左边参数是你 Mac 电脑里想要上传的文件路径，右边是服务器上的路径。如果没配置 ssh key，会提示你输入密码，照办就是。
 
 
@@ -42,34 +51,43 @@ Host yongyao.li
 
 把你的公钥用scp或者sftp上传到了远程远程ssh服务器，并把公钥的内容追加到ssh服务器的 ~/.ssh/authorized_keys：
 
+```
 $ scp ~/.ssh/id_rsa.pub user@host:
 $ ssh root@host
 $ cat id_rsa.pub >> ~/.ssh/authorized_keys
+```
 
 3. ~/.ssh 相关文件权限
 
 现在为本地mac的私钥设置权限：
 
+```
 $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/id_rsa
+```
 
 设置centos服务器上的文件权限：
 
+```
 $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/authorized_keys
+```
 
 如果 /etc/ssh/sshd_config 内的 StrictModes 被启用（缺省值），以上的权限是必须的。
 
 4.一旦你检查过可以用密钥对来登录服务器，你可以在你的centos服务器的 /etc/ssh/sshd_conf 内加入以下设置来停用口令验证：
 ##### # 停用口令验证，强制使用密钥对
 
+```
 PasswordAuthentication no
+```
+
 重启sshd
 
 ##### # service sshd restart
 这是换一台机器或者虚拟机进行登录，会提示以下
 
-##### # ssh xxx@yongyao.li
+##### # ssh mingweiliao@xmisp.com
 Permission denied,  (publickey,gssapi-keyex,gssapi-with-mic)
 
 Last login: Tue Dec  6 15:27:29 on ttys002
@@ -97,34 +115,49 @@ The key's randomart image is:
 xmispdeiMac:~ mingwei$
 
 生成 rsa
+
+```
 $ ssh-keygen -t rsa -C  'mingweiliao@xmisp.com'
+```
 
 上传到ssh服务器
 
-scp /Users/mingwei/.ssh/id_rsa.pub root@192.168.60.48:~/
-ssh root@192.168.60.48
+```
+scp /Users/mingwei/.ssh/id_rsa.pub root@192.168.60.*:~/
+ssh root@192.168.60.*
 cat id_rsa.pub >> .ssh/authorized_keys
+```
 
 #### 3.[CentOS 安装 Jenkins]
 1.[CentOS安装java环境](http://www.centoscn.com/CentOS/Intermediate/2016/0507/7194.html)
-	java -version
-	rpm -qa|grep java
-	卸载已经安装的java
-	yum -y remove java-1.5.0-gcj-1.5.0.0-29.1.el6.x86_64
+
+```
+java -version
+rpm -qa|grep java
+```
+
+卸载已经安装的java
+
+```
+yum -y remove java-1.5.0-gcj-1.5.0.0-29.1.el6.x86_64
+```
 
 [重新安装 最后采用方案](http://tecadmin.net/install-java-8-on-centos-rhel-and-fedora/)
 
+```
 ##### # cd /opt/
 ##### # wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz"
 
 ##### # tar xzf jdk-8u111-linux-x64.tar.gz
+```
 
 2.安装Jenkins
 
+```
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 sudo yum install jenkins
-
+```
 
 输入指令 sudo service jenkins start，如果出现类似如下的报错：
 
@@ -160,7 +193,7 @@ Starting Jenkins Jenkins requires Java7 or later, but you are running 1.5.0 from
     "
 [解决方案](https://testerhome.com/topics/4043)
 
-http://192.168.60.48:8080/ (注意有开VPN的，可能需要关闭否则无法加载页面)
+http://192.168.60.*:8080/ (注意有开VPN的，可能需要关闭否则无法加载页面)
 
 /var/root/.jenkins/secrets/initialAdminPassword
 cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -168,7 +201,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 用户名:mingweiliao
 全名:mingweiliao@xmisp.com
-密码:clicknet
+密码:*******
 
 [安装java\jenkins简单方案](http://jaminzhang.github.io/ci/cd/Jenkins-Installation-and-Config/)
 
@@ -176,7 +209,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 [天朝墙的问题 官方Plugins](https://wiki.jenkins-ci.org/display/JENKINS/Plugins)
 
-Xcode integration
+> Xcode integration
 Credentials Plugin
 Keychains and Provisioning Profiles Management
 Publish over FTP
@@ -194,11 +227,17 @@ Git+Plugin (Git)
 20161229
 
 2次安装 Jenkins [参考](https://segmentfault.com/a/1190000007086764)
+
+```
 cat /var/lib/jenkins/secrets/initialAdminPassword
 a77e7ad2ec5d4125a84ce24737abc625
+```
 
 向服务器上传文件
-scp cloudbees-folder.hpi root@192.168.60.48:/var/lib/jenkins/plugins
+
+```
+scp cloudbees-folder.hpi root@192.168.60.*:/var/lib/jenkins/plugins
+```
 
 [烂泥：jenkins插件安装与卸载]http://www.ilanni.com/?p=12612
 
@@ -212,9 +251,11 @@ scp cloudbees-folder.hpi root@192.168.60.48:/var/lib/jenkins/plugins
 卸载jenkins
 在某次自动安装插件时异常了一大片，刷新也没出现下一步，等待许久无果，删了重装
 
+```
 1.rpm -e jenkins
 2.会有一些残留的文件分散在各地
 find / -iname jenkins | xargs -n 1000 rm -rf
+```
 
 [解决CentOS下卸载MySQL不干净的问题](http://www.centoscn.com/CentosBug/softbug/2014/0924/3829.html)
 
