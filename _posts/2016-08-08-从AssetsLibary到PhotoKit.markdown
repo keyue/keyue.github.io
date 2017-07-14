@@ -145,8 +145,8 @@ imageView.image = [UIImage imageWithData:data];
 >1.
 ```
 [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{} completionHandler:^(BOOL success, NSError * _Nullable error) {}];
-方法是异步操作,在里边更新UI需要dispatch_async(dispatch_get_main_queue(), ^{});
 ```
+方法是异步操作,在里边更新UI需要dispatch_async(dispatch_get_main_queue(), ^{});
 	
 >2.
 ```
@@ -155,9 +155,9 @@ imageView.image = [UIImage imageWithData:data];
                                 contentMode:(PHImageContentMode)contentMode 
                                     options:(nullable PHImageRequestOptions *)options 
                               resultHandler:(void (^)(UIImage *__nullable result, NSDictionary *__nullable info))resultHandler {}
+```
 方法取照片，会调用2次，有取照片上传服务器的需要注意，不然会遇到上传2次重复图片文件 
 [解决方案](http://stackoverflow.com/questions/26663258/uiimage-size-returned-from-requestimageforasset-is-not-even-close-to-the-targ)
-```
 
 
 
