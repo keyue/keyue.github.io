@@ -7,7 +7,7 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 
 #### 写在前面 
 
-周三刚在公司内部做完Git的分享，这里稍微再整理下，方便以后查看。在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即SVN和Git(其他版本控制系统还有比如：CVS,VVS)。在SVN下我们常配合图形管理工具 CornerStore使用、Git 常配合图形管理工具 SourceTree 使用。
+> 周三刚在公司内部做完Git的分享，这里稍微再整理下，方便以后查看。在团队项目开发迭代过程中，版本控制是必不可缺少的。目前，版本控制系统主要分为集中式和分布式 ，即SVN和Git(其他版本控制系统还有比如：CVS,VVS)。在SVN下我们常配合图形管理工具 CornerStore使用、Git 常配合图形管理工具 SourceTree 使用。
 
 ![git sourcetree](http://o9lammkmn.bkt.clouddn.com/IMG_2001.jpg)
 
@@ -27,8 +27,45 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 
 5. 权限问题：
 	在SVN中，可以设定每个账号的权限，比如只读、读写权限等，而Git就没有相应的权限控制，相同Team下的iOS、Android、NodeJs项目。这也正是一些公司仍然使用svn的原因。
+
+#### 分支模型
+
+每个项目必须要有master、develop分支。
+每个开发人员拥有一个自己的分支，如aa-dev、bb-dev。
+
+1. master 分支
+- master 分支只能存在release版本的代码，并需要对每个release打对应的tag。
+
+2. develop 分支
+- develop 由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。
+- 当参与开发的人员较多时，可指定一个人管理develop分支，专门负责合并代码，便于管理，避免多人同时使用develop分支而出现问题。
+- 另外当功能开发完毕后，代码合并入develop分支，测试完成通过后，merge到master分支，并在master上打tag。
+- 开发人员自己的分支
+- 开发人员自己的分支，由develop分支检出，是自己负责的功能分支的上游
+
+#### 工作流程
+
+1. Feature （新需求开发）
+- 当有新需求需要开发时：
+- 每个开发人员在自己的分支上检出一个新的feature分支，如在czn上检出feature_search分支
+- 在新的feature分支上进行开发
+- 新功能开发完毕后合并到自己的分支
+- 所有人员的分支合并到develop分支，并进行测试
+- 测试通过后合并到master，并打tag
+
+2. Hotfix （紧急修复bug）
+- 当有紧急bug需要修复时
+- 从master 拉分支hotfix_xxx
+- 修复完毕后合并到develop分支
+- 测试完毕后合并到master分支，并打tag
+
+#### 小结
+
+分支模型已经工作流程大约如图所示：
+
+![Git flow](http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg?imageView2/2/w/600)
 	
-#### git常用命令
+#### Git常用命令
 
 1. 设置
     1. config命令
@@ -178,19 +215,19 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 		- git shortlog：显示总提交次数与每次提交的提交消息
 
 	5. describe命令
-		- git describe [<commit>|<tag>]：查看指定提交或者指定标签（默认是最近一次提交）的注解标签信息
-		- git desribe --tags [\<commit\>|\<tag\>]：查看指定提交或者指定标签（默认是最近一次提交）的标签信息
-		- git desribe --all [\<commit\>|<\tag\>]：查看指定提交或者指定标签（默认是最近一次提交）的引用信息
+		- git describe [\<commit\>|\<tag\>]：查看指定提交或者指定标签（默认是最近一次提交）的注解标签信息
+		- git desribe \--tags [\<commit\>|\<tag\>]：查看指定提交或者指定标签（默认是最近一次提交）的标签信息
+		- git desribe \--all [\<commit\>|<\tag\>]：查看指定提交或者指定标签（默认是最近一次提交）的引用信息
 
 	6. reflog命令
 		- git reflog：显示所有提交，下拉，推送，与切换分支操作
-		- git reflog --all：显示所有提交，下拉，推送操作
+		- git reflog \--all：显示所有提交，下拉，推送操作
 
 7. 修补　
 	1. apply命令
 		- git apply [\--index\|\--cached] patchname.patch：在暂存区与工作目录或者暂存区（默认是工作目录）打补丁
-		- git apply --reverse|-R patchname.patch：反向打补丁
-		- git apply --reject patchname.patch：打补丁，将没有冲突的文件合并，将有冲突的文件标记出来，并生成对应的.rej文件
+		- git apply \--reverse|-R patchname.patch：反向打补丁
+		- git apply \--reject patchname.patch：打补丁，将没有冲突的文件合并，将有冲突的文件标记出来，并生成对应的.rej文件
 	
     2. cherry-pick命令
 		- git cherry-pick \<commit\>：将另一个分支上面的指定提交应用到当前分支上
@@ -203,13 +240,14 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 	
     4. revert命令
 		- git revert \<commit\>：恢复一个指定提交
+
 8. 调试
 	1. bisect命令
 		- 使用二分查找，找到引入bug的提交
-			- git bisect start：开始二分查找
-			- git bisect bad [\<commit\>]：设置指定提交（默认是当前分支）为bad
-			- git bisect good [\<commit\>]：设置指定提交（默认是当前分支）为good
-			- 输入了上面三个命令后就会自动开始二分查找，我们之后只需要标记当前提交时bad还是good就行了，如果当前找的的提交时bad就输入git bisect bad，否则输入git bisect good直到找到有bug的提交。
+        - git bisect start：开始二分查找
+        - git bisect bad [\<commit\>]：设置指定提交（默认是当前分支）为bad
+        - git bisect good [\<commit\>]：设置指定提交（默认是当前分支）为good
+        - 输入了上面三个命令后就会自动开始二分查找，我们之后只需要标记当前提交时bad还是good就行了，如果当前找的的提交时bad就输入git bisect bad，否则输入git bisect good直到找到有bug的提交。
 	
     2. blame命令
 		- 显示修改和作者最后修改的文件的每一行，这就是一个“问责”的命令，如果哪里有问题，我们可以很快地找到该问题是谁导致的。
@@ -218,43 +256,6 @@ date: 2016-05-13 12:08:08.000000000 +09:00
     3. grep命令
 		- git grep keys：在工作目录中所有文件中搜索keys
 		- git grep \--cached keys：在暂存区中所有文件中搜索keys
-		
-#### 分支模型
-
-每个项目必须要有master、develop分支。
-每个开发人员拥有一个自己的分支，如aa-dev、bb-dev。
-
-1. master 分支
-	- master 分支只能存在release版本的代码，并需要对每个release打对应的tag。
-
-2. develop 分支
-	- develop 由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。
-	- 当参与开发的人员较多时，可指定一个人管理develop分支，专门负责合并代码，便于管理，避免多人同时使用develop分支而出现问题。
-	- 另外当功能开发完毕后，代码合并入develop分支，测试完成通过后，merge到master分支，并在master上打tag。
-	- 开发人员自己的分支
-	- 开发人员自己的分支，由develop分支检出，是自己负责的功能分支的上游
-
-#### 工作流程
-
-1. Feature （新需求开发）
-	- 当有新需求需要开发时：
-	- 每个开发人员在自己的分支上检出一个新的feature分支，如在czn上检出feature_search分支
-	- 在新的feature分支上进行开发
-	- 新功能开发完毕后合并到自己的分支
-	- 所有人员的分支合并到develop分支，并进行测试
-	- 测试通过后合并到master，并打tag
-
-2. Hotfix （紧急修复bug）
-	- 当有紧急bug需要修复时
-	- 从master 拉分支hotfix_xxx
-	- 修复完毕后合并到develop分支
-	- 测试完毕后合并到master分支，并打tag
-
-#### 小结
-
-分支模型已经工作流程大约如图所示：
-
-![Git flow](http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg)
 
 #### 学习资料推荐
 1. [GitPro2](https://git-scm.com/book/zh/v2/起步-关于版本控制)
