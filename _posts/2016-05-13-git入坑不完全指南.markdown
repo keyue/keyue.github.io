@@ -23,10 +23,14 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 	在SVN中，分支作为版本库中一个目录，若需要查看是否合并，还需要运行svn propget svn:mergeinfo指令；而在Git中，可以快速在几个分支中切换和快速合并。
 
 4. 存储方式不同：
-	SVN是按文件存储，Git是按元数据方式存储。因此，每次从服务器Pull代码的时候，SVN相当于打包下载，git是只更新最新被修改的文件。
+	SVN是按文件存储，Git是按元数据方式存储。因此，每次从服务器Pull代码的时候，SVN相当于打包下载，Git是只更新最新被修改的文件。
 
 5. 权限问题：
-	在SVN中，可以设定每个账号的权限，比如只读、读写权限等，而Git就没有相应的权限控制，相同Team下的iOS、Android、NodeJs项目。这也正是一些公司仍然使用svn的原因。
+	在SVN中，可以设定每个账号的权限，比如只读、读写权限等，而Git就没有相应的权限控制，相同Team下的iOS、Android、NodeJs项目。这也正是一些公司仍然使用SVN的原因。
+
+#### 分支模型以及工作流程：
+
+![Git flow](http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg?imageView2/2/w/600)
 
 #### 分支模型
 
@@ -34,10 +38,10 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 每个开发人员拥有一个自己的分支，如aa-dev、bb-dev。
 
 1. master 分支
-- master 分支只能存在release版本的代码，并需要对每个release打对应的tag。
+- master分支只能存在release版本的代码，并需要对每个release打对应的tag。
 
 2. develop 分支
-- develop 由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。
+- develop由master分支检出，它作用主要是日常开发合并代码，并与master分支做交互。
 - 当参与开发的人员较多时，可指定一个人管理develop分支，专门负责合并代码，便于管理，避免多人同时使用develop分支而出现问题。
 - 另外当功能开发完毕后，代码合并入develop分支，测试完成通过后，merge到master分支，并在master上打tag。
 - 开发人员自己的分支
@@ -45,25 +49,19 @@ date: 2016-05-13 12:08:08.000000000 +09:00
 
 #### 工作流程
 
-1. Feature （新需求开发）
+1. feature（新需求开发）
 - 当有新需求需要开发时：
-- 每个开发人员在自己的分支上检出一个新的feature分支，如在czn上检出feature_search分支
+- 每个开发人员在自己的分支上检出一个新的feature分支，如在aa-dev上检出feature_search分支
 - 在新的feature分支上进行开发
 - 新功能开发完毕后合并到自己的分支
 - 所有人员的分支合并到develop分支，并进行测试
 - 测试通过后合并到master，并打tag
 
-2. Hotfix （紧急修复bug）
+2. hotfix（紧急修复bug）
 - 当有紧急bug需要修复时
 - 从master 拉分支hotfix_xxx
 - 修复完毕后合并到develop分支
 - 测试完毕后合并到master分支，并打tag
-
-#### 小结
-
-分支模型已经工作流程大约如图所示：
-
-![Git flow](http://o9lammkmn.bkt.clouddn.com/IMG_2002.jpg?imageView2/2/w/600)
 	
 #### Git常用命令
 
@@ -71,7 +69,7 @@ date: 2016-05-13 12:08:08.000000000 +09:00
     1. config命令
 		- git config \--global user.name keyue:配置全局用户名，若不要"\--global"或者将"global"改为"local"则表示配置局部用户名
 		- git config \--global user.email keyue@gmail.com:配置全局电子邮箱
-		- git config \--global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config \--global alias.pom 'push origin master'注意复合操作中不可以带"-"与""
+		- git config \--global alias.cm commit:配置别名，为git命令配置别名，还可以配置复合操作，比如 git config \--global alias.pom 'push origin master'注意复合操作中不可以带"-"与" "
 		- git config \--list:显示所有配置信息
 
 	2. help命令
