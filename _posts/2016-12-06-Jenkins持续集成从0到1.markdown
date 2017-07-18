@@ -249,12 +249,13 @@ scp cloudbees-folder.hpi root@192.168.60.*:/var/lib/jenkins/plugins
 
 [烂泥：jenkins插件安装与卸载](http://www.ilanni.com/?p=12612)
 
-
 [CentOS 7 安装 Gitlab](https://segmentfault.com/a/1190000002729796)
+
 [CentOS7 安装 Gitlab](http://zhaijunming5.blog.51cto.com/10668883/1715131)
 
 [记录一次 GitLab 等搭建过程](http://blog.dianqk.org/2015/10/19/记录一次%20GitLab%20等搭建过程/)
-[[gitlab]搭建私有github仓库](https://yq.aliyun.com/articles/20501)
+
+[gitlab]搭建私有github仓库](https://yq.aliyun.com/articles/20501)
 
 卸载jenkins
 在某次自动安装插件时异常了一大片，刷新也没出现下一步，等待许久无果，删了重装
